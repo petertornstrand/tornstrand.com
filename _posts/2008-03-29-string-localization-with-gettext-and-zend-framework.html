@@ -1,0 +1,62 @@
+--- 
+layout: post
+title: String localization with gettext and Zend Framework
+disqus_id: node/57
+---
+
+<p class="lead">There's a lot more to localizing a web site then just replacing strings with diffrent languages (for an exelent introduction read the <a href="http://framework.zend.com/manual/en/zend.locale.html">ZF documentation on Zend_Locale</a>). But in this post I will talk about string localization, and especially string localization using <a href="http://www.gnu.org/software/gettext/">gettext</a> and .mo-files with <a href="http://framework.zend.com/">Zend Framework</a>.</p>
+
+<p>The Zend Framework offers many ways for you to store your translated strings. It could be an array, a CSV or XML file or you could use gettext which we will be using in the examples below.</p>
+
+<p>First you need an example application, it doesn't need to be more complicated than a clean installation of ZF with a IndexController and a matching view, and of course the bootstrap.</p>
+
+<p>Ok, so the first thing we will do is to load the <a href="http://framework.zend.com/manual/en/zend.translate.html"><code>Zend_Translate</code></a> class in our bootstrap, load the language files, and save the object in the registry using <a href="http://framework.zend.com/manual/en/zend.registry.html"><code>Zend_Registry</code></a>.</p>
+
+<code>Zend_Loader::loadClass('Zend_Translate');
+Zend_Loader::loadClass('Zend_Registry');
+$translate = new Zend_Translate('gettext', './languages');
+$registry = Zend_Registry::getInstance();
+$registry->set('Zend_Translate', $translate);</code>
+
+<p>Ok, so what we did here was to first load the classes that we need, the <code>Zend_Translate</code> and <code>Zend_Registry</code> classes. Next we create the <code>Zend_Translate</code> object and pass in the directory containing all of our different languages we will support in our application, in this case we will be supporting swedish and english language. Don't worry about the language files, I will explain how you create those later on. Finally we save our <code>Zend_Translate</code> object to the registry so we don't need to create our object over and over again in our application.</p>
+
+<p>The next step is to dive into our applications views to identify the strings we want translated. In our example we only have one view, the index view of our <code>IndexController</code>. So let's open that up and have a look at it.</p>
+
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+	&lt;title&gt;Zend_Translate example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h1&gt;Hello World!&lt;/h1&gt;
+	&lt;p&gt;This is a Zend_Translate demonstration&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html></code>
+
+<p>Here we have two strings that needs to be localized, so we wrap these strings in a call to the translate object.</p>
+
+<code>&lt;h1&gt;&lt;?php echo $this->translate("Hello World!"); ?&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;?php echo $this->translate("This is a Zend_Translate demonstration"); ?&gt;&lt;/p&gt;</code>
+
+<p>Zend Framwork 1.5 ships with the <code>Zend_View_Helper_Translate</code> which makes translating strings easy, before you were forced to translate the strings in the controller or write your own translation view helper.</p>
+
+<p>Now we have made all the modifications to our application that needs to be done to support string localization. Now it's time to create our translation files, the .mo-files. First thing you want to do is to download [Poedit](http://www.poedit.net/). Poedit is an application that helps you gather all the strings that should be translated from your application and presents them in a interface for you to translate. The program is open source and exists in versions for all major operating systems.</p>
+
+<p>Lets fire up Poedit and try to import the strings. Click File -> New catalogue and a settings windows should appear.</p>
+
+<p>Fill in the settings so it looks something like the above image. Then click the Paths tab.</p>
+
+<p>Here you first enter the base path to your application and then you add the directories in your application that contains the files with the strings to be translated (your views). When your done click the Keywords tab.</p>
+
+<p>Here you enter the name of the function you are calling to translate a string, in Zend Framework the function name is translate (<code>$this->translate("String")</code>).</p>
+
+<p>When you're done click OK. If your setup is anything like mine you will now encounter a error saying the catalogue update failed.</p>
+
+<p>This was expected and happens because Poedit don't know to look for strings in <code>.phtml</code> files that are used by Zend Framework. Click File -> Preferences and click the tab Code readers. Select the PHP item and click Edit.</p>
+
+<p>Edit the settings so they reflect the settings in the picture above.</p>
+
+<p>Now when you click update the strings that we wrapped in the translate function call should appear in Poedit in a list with the original strings to the left and the translations to the right. Get to work translating your strings and then save the catalogue. I'm keeping all my language files in a directory called languages in the web application root next to the library and application directories.</p>
+
+<p>The application will automatically detects locale based on the <code>HTTP_ACCEPT_LANGUAGE</code> header sent by browsers. It will try to match the available languages to the users preffered language and if no match is made it will use the default language (the strings in your view files). You can customize this to use other methods but that's out of the scope for this post.</p>

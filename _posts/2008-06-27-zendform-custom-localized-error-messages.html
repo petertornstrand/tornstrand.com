@@ -1,0 +1,27 @@
+--- 
+layout: post
+title: Zend_Form custom/localized error messages
+disqus_id: 2008/6/zendform-custom-localized-error-messages
+---
+
+<p class="lead">I've been playing around with <a href="http://framework.zend.com/manual/en/zend.form.html">Zend_Form</a> and <a href="http://framework.zend.com/">Zend Framework</a> 1.5 these last couple of days. Like most people I hade some trouble getting used to the decorator part of the form API. Decorators are used to style form elements for rendering in the browser, adding tags before, after and wrapping the form element itself. After much swearing I finally found <a href="http://devzone.zend.com/article/3450-Decorators-with-Zend_Form">this article</a> in the Zend Developer forums that did a pretty good job explaining it.</p>
+
+<p>The next problem I ran into was customizing the form error messages, not just customizing the messages but also localizing them. The framework has default error messages defined for all validators you can use with your form elements but they are kind of stiff and I doubt anyone really want's to use them. It turns out the solution is really simple.</p>
+
+<p>To attach a validator to a form element you normally write something like this:</p>
+
+<code>$textField = new Zend_Form_Element_Text("myField");
+$textField->addValidator(new Zend_Validate_NotEmpty());</code>
+
+<p>If you want to customize the message and maybe even localize it you simply init a validator and manuelly set the message via the setMessage method, like this:</p>
+
+<code>$notEmpty = new Zend_Validate_NotEmpty();
+$notEmpty->setMessage("You have to enter a value");
+$textField = new Zend_Form_Element_Text("myField");
+$textField->addValidator($notEmpty);</code>
+
+<p>If you like to localize the error message, replace the setMessage call with:</p>
+
+<code>$notEmpty->setMessage($this->getView()->translate("You have to enter a value"));</code>
+
+<p>It's just that simple ;-)</p>

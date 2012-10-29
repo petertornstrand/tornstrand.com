@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Reading a XML processing instruction with PHP
+disqus_id: node/63
+---
+
+<p class="lead">I'm doing some XSL transformations in a project I'm involved in right now. The XML documents that are beeing transformed all include a xml-stylesheet processing instruction that I need to read in order to know what stylesheet to use for a specfic document.</p>
+
+<p>To my surprise, reading processing instructions from a DOMDocument in PHP was not so easy as one might assume.</p>
+
+<p>I wont go into details and tell you about all the hair (of which I have very little) I lost during my search for a way to get ahold of those processing instructions. In the end I used a XPath expression to select the PI. Below you'll find the code I used.</p>
+
+<code>$doc = new DOMDocument;
+$doc->load("document.xml");
+$xpath = new DOMXpath($doc);
+$nodes = $xpath->evaluate("/child::processing-instruction('xml-stylesheet')");
+if(!empty($nodes))
+$pi = $nodes->item(0);
+print $pi->target;
+print $pi->data;</code>

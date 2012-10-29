@@ -1,0 +1,18 @@
+--- 
+layout: post
+title: Avoid Drupal theme file cluttering
+disqus_id: 2010/4/avoid-drupal-theme-file-cluttering
+---
+
+<p class="lead">A Drupal theme may consist of several template overrides. These files are usually stored in the themes root folder. For a simple theme, this is not a problem but if you are coding a complex theme with lots of overrides of views and cck templates it starts to get pretty cluttered in your themes directory.</p>
+
+<p>While working with <a href="http://developmentseed.org/">Development Seeds</a> excelent base theme <a href="http://code.developmentseed.org/tao/node/157">Tao</a> I came across an elegant solution to this. Using <a href="http://api.drupal.org/api/function/hook_theme/6"><code>hook_theme()</code></a> we can tell Drupal that we want to store our custom template files in another directory in our themes folder.</p>
+
+<p>In your themes <code>template.php</code> put the following function:</p>
+
+<code>function MYTHEME_theme($existing, $type, $theme, $path) {
+	$template_path = drupal_get_path('theme', 'MYTHEME') .'/templates';
+	return drupal_find_theme_templates($existing, '.tpl.php', $template_path);
+}</code>
+
+<p>Substitute <code>/templates</code> with the directory name of your choice.</p>

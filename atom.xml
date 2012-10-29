@@ -1,0 +1,31 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>Peter Törnstrand</title>
+  <link href="http://tornstrand.com/"/>
+  <link type="application/atom+xml" rel="self" href="http://tornstrand.com/atom.xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://tornstrand.com/</id>
+  <author>
+    <name>Peter Törnstrand</name>
+    <email>peter.tornstrand@happiness.se</email>
+  </author>
+
+  {% for post in site.posts %}
+  <entry>
+    <id>http://tornstrand.com{{ post.id }}</id>
+    <link type="text/html" rel="alternate" href="http://tornstrand.com{{ post.url }}"/>
+    <title>{{ post.title }}</title>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>Peter Törnstrand</name>
+      <uri>http://tornstrand.com/</uri>
+    </author>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+ 
+</feed>
