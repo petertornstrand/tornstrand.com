@@ -9,6 +9,7 @@ body {
 	background: #fafafa;
 	line-height: 150%;
 	-webkit-text-size-adjust: 100%;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -26,6 +27,12 @@ h2 {line-height: 130%; margin-bottom: 10px;}
 h3 {line-height: 130%; margin-bottom: 8px; }
 h4 {line-height: 125%; margin-bottom: 8px; }
 h5 {line-height: 120%; margin-bottom: 8px;}
+
+h1.logo {
+  font-size: 36px;
+  color: #fff;
+  text-transform: uppercase;
+}
 	
 h6 {
 	font-size: 14px;
@@ -53,6 +60,8 @@ small { font-size: 80%; }
 a, a:visited {text-decoration: underline; outline: 0; }
 a:hover, a:focus { color: #000; text-decoration: none;}
 p a, p a:visited { line-height: inherit; }
+header a { color: #fff; }
+header a:hover, header a:focus { color: #fff; }
 
 /* Lists */
 
@@ -120,23 +129,25 @@ header {
 	margin-bottom: 40px;
 }
 
-header pre {
-	background-color: transparent;
-	border: 0;
-	display: block;
-	font: 9px monospace;
-	margin: 0;
-	padding: 0;
-}
-
 /* Layout */
 
-#container {
-	max-width: 840px;
-	margin: 20px auto;
-	background: #fff;
-	padding: 60px;
-	border-radius: 5px;
+header {
+  color: #fff;
+  background: #1D1D1D;
+}
+
+header .content-container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+}
+
+#main,
+footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 #home {
@@ -177,11 +188,11 @@ code,pre,p.smalldesc {
 	border-top: 1px solid #d9d9d9;
 	display: block;
 	width: 100%;
-	font: 12px/24px "Courier New",Courier,monospace;
+	font: 14px/24px "Inconsolata", monospace;
 	margin: 15px 0;
 	padding: 10px 5px;
 	overflow: auto; 
-	overflow-Y: hidden;
+	overflow-y: hidden;
 }
 
 code {
