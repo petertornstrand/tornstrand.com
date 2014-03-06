@@ -7,12 +7,12 @@ task('prod_server', function () {
 });
 
 task('upload', function () {
-  ignore(array(
-    'style.css',
-  ));
-  upload(__DIR__ . '/_site', '/mnt/persist/www/tornstrand2');
+  // ignore(array(
+  //   'style.css',
+  // ));
+  upload(__DIR__ . '/_site', '/mnt/persist/www/tornstrand');
 });
 
-task('prod', 'Production', ['prod_server', 'upload']);
+task('prod', 'Deploy to production.', ['prod_server', 'upload']);
 
 start();
