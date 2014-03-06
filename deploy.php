@@ -2,15 +2,18 @@
 require 'vendor/autoload.php';
 deployer();
 
+// Get parameters for deploy.
+$params = parse_ini_file('parameters.ini');
+
 task('prod_server', function () {
-    connect('vps-53427.cloudnet.se', 'root', rsa('~/.ssh/id_rsa'));
+    connect($params['prod_server_host'], $params['prod_server_user'], rsa('~/.ssh/id_rsa'));
 });
 
 task('upload', function () {
   // ignore(array(
   //   'style.css',
   // ));
-  upload(__DIR__ . '/_site', '/mnt/persist/www/tornstrand');
+  upload($params['local_path'], $params['remote_path']);
 });
 
 task('prod', 'Deploy to production.', ['prod_server', 'upload']);
