@@ -1,0 +1,5 @@
+{
+  "require": {
+      "elfet/deployer": "dev-master@dev"
+  }
+}
