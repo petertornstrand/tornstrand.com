@@ -1,3 +1,16 @@
-markdown: rdiscount
-highlighter: null
+title: "Peter Törnstrand"
+url: "https://tornstrand.com"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
 permalink: /archive/:year/:i_month/:title/
+
+exclude:
+  - parameters.ini
+  - vendor
+  - .idea
+  - Gemfile
+  - Gemfile.lock
+  - docker-compose.yml
+  - README.md
