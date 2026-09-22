@@ -1,42 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-  <title>{{ page.title }}</title>
-	<meta name="description" content="{{ page.title }}">
-  <meta name="author" content="Peter Törnstrand">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="/css/style.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.title }}">
+    <meta name="author" content="Peter Törnstrand">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-  <div class="content-container">
-    <h1 class="logo">Peter Törnstrand</h1>
-    <p>I'm Peter Törnstrand, I am a web developer at <a href="http://happiness.se/">Happiness</a>.</p>
-  </div>
+    <div class="content-container">
+        <img class="profile" src="/images/profile-peter.jpg" alt="Peter Törnstrand">
+        <div class="about">
+            <h1>Peter Törnstrand</h1>
+            <p>I'm a <a href="http://www.happiness.se/">web developer @ Happiness</a> based in Stockholm, Sweden.</p>
+        </div>
+        <div class="links">
+            <p>
+                <a href="https://www.drupal.org/u/peter-t%C3%B6rnstrand">Drupal</a>
+                <a href="https://github.com/petertornstrand">GitHub</a>
+                <a href="https://www.linkedin.com/in/petertornstrand/">LinkedIn</a>
+            </p>
+        </div>
+    </div>
 </header>
+
 <div id="main" role="main">
-{{ content }}
+    {{ content }}
 </div>
-<footer>
-  <div class="content-container">
-		<img class="drupal" src="/images/drupal.png" alt="Drupal Association Individual member">
-    <div class="about">
-      <h2>About</h2>
-      <p>Peter Törnstrand is a <a href="http://www.happiness.se/">web developer</a> based in Stockholm, Sweden.</p>
-    </div>
-    <div class="links">
-      <p>
-        <a href="https://www.drupal.org/user/293786">drupal.org/user/293786</a><br>
-        <a href="https://github.com/petertornstrand">github.com/petertornstrand</a><br>
-        <a href="https://www.linkedin.com/in/petertornstrand/">linkedin.com/in/petertornstrand</a>
-      </p>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
