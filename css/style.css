@@ -9,7 +9,7 @@ body {
 	background: #fafafa;
 	line-height: 150%;
 	-webkit-text-size-adjust: 100%;
-  margin: 0;
+	margin: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -151,6 +151,12 @@ img.profile {
 	border-radius: 50%;
 	width: 150px;
 	margin: 0 0 20px 20px;
+}
+
+@media (max-width: 460px) {
+	img.profile {
+		display: none;
+	}
 }
 
 /* Layout */
