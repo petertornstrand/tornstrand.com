@@ -1,0 +1,62 @@
+---
+layout: post
+title: Harvest season is over
+disqus_id:
+---
+
+<p class="lead">Late on August 23, 2026, as I was heading to bed, my phone lit up. It was an announcement from Harvest. Fittingly enough, delivered in the middle of the night.</p>
+
+<blockquote>
+    <p>On your next renewal date, September 24, 2026, your account will be transitioned to Harvest Enterprise plan with Unlimited usage billing.</p>
+    <p>You will be automatically billed $20 844,00 for your new annual plan.</p>
+</blockquote>
+
+<p>My first reaction was that this couldn't be right. Had Harvest been hacked and I was now being subjected to some menacing scheme?</p>
+
+<p>I got the hacking part wrong.</p>
+
+<p>Harvest was one of the early SaaS success stories, launched in 2006 and built around a relatively simple promise: useful software, predictable pricing and a long-term relationship with its customers. In 2025, Harvest was acquired by <a href="https://bendingspoons.com/">Bending Spoons</a>, marking the end of nearly two decades under its original ownership.</p>
+
+<p>Not long after, we decided the costs were unjustifiable and that it was time to move on.</p>
+
+<h2>Finding an alternative</h2>
+
+<p>Once we had decided to replace Harvest, we already knew we wanted to move to an open source project. At Happiness, the company I own and work for, we work exclusively with open source software for our clients, mainly <a href="https://www.drupal.org">Drupal</a>, <a href="https://wordpress.com">WordPress</a> and <a href="https://matomo.org">Matomo</a>.</p>
+
+<p>A search for open source time tracking projects produced a longer list than I had expected. We chose to focus on <a href="https://www.solidtime.io">Solidtime</a> and <a href="https://www.kimai.org">Kimai</a>, as they seemed to suit our needs best.</p>
+
+<p>Both covered the basics we were looking for, but Kimai had a few characteristics that made it particularly attractive to us. So we decided to move forward with that option.</p>
+
+<p>First, Kimai is written in <a href="https://www.php.net/">PHP</a> and built on <a href="https://symfony.com">Symfony</a>. PHP is the language we work with every day, and Symfony is a framework we already know well.</p>
+
+<p>Self-hosting was another important factor. We can run Kimai on infrastructure we control and decide ourselves when to upgrade it.</p>
+
+<p>Kimai's API also gives us a way to integrate time tracking directly into the tools we already use. We are particularly interested in exposing these capabilities through MCP, allowing our internal tools and AI-assisted workflows to interact with Kimai.</p>
+
+<p>Finally, there was the practical question of getting our existing data out of Harvest and into whatever came next. After years of using Harvest, starting with an empty database wasn't an attractive option. Kimai made it relatively easy to import our exported Harvest data, significantly lowering the cost and risk of making the switch.</p>
+
+<p>None of these things alone decided it. Together, they made Kimai a good fit for both how we work today and how we want to manage an important piece of our infrastructure in the future.</p>
+
+<h2>Our first plugin</h2>
+
+<p>Once we made the decision, we immediately ran into a gap: Harvest had an integrated scheduling tool called <a href="https://www.getharvest.com/forecast/harvest-and-forecast">Forecast</a>, and we needed an equivalent.</p>
+
+<p>We looked at standalone alternatives such as <a href="https://www.openproject.org">OpenProject</a> and <a href="https://www.libreplan.dev">LibrePlan</a>. Both are capable projects, but frankly, they were total overkill for what we needed. We just wanted to schedule team members across projects, look at the coming weeks, and compare planned hours against actual logged time (preferably inside the same dashboard we already use for clients and hours).</p>
+
+<p>So we decided to build our own planning plugin, <a href="https://github.com/happiness/PlannerBundle">PlannerBundle</a>.</p>
+
+<p>Even though I know Symfony well, writing core business logic for an unfamiliar codebase required a bit of a leap. Framework knowledge only gets you so far when you're navigating another app's internal conventions.</p>
+
+<p><em>PlannerBundle</em> became our trial by fire with Kimai. We didn't try to clone every single feature in Forecast right away. Instead, we built only the scheduling tools our team actually uses day-to-day. Since it's a isolated plugin, core Kimai updates won't break our custom features, and we can iterate as our workflow evolves.</p>
+
+<h2>Why open source</h2>
+
+<p>For us, open source isn't just about dodging subscription fees. It's about control.</p>
+
+<p>We happily paid for Harvest for years and built real company workflows around it. But we had zero say in what happened to the product. When ownership changed, the ground shifted under our feet overnight.</p>
+
+<p>Open source doesn't magically fix everything. Maintainers can drop projects, and open-source companies get acquired, too. The difference? <strong>The code doesn't vanish.</strong> If a project goes sideways, we can keep running our existing version, patch it ourselves, or fork it if necessary.</p>
+
+<p>When a tool sits at the center of your invoicing, reporting, and historical data for years, it stops being "just an app". It becomes critical infrastructure. Replacing it isn't impossible, but it definitely hurts.</p>
+
+<p>Having full access to our code, our data, and our tech roadmap feels a hell of a lot safer than gambling on the next SaaS acquisition.</p>

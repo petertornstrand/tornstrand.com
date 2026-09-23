@@ -2,7 +2,7 @@
 
 body {
 	color: #444;
-	font-size: 14px;
+	font-size: 16px;
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	font-style: normal;
@@ -28,7 +28,7 @@ h4 {line-height: 125%; margin-bottom: 8px; }
 h5 {line-height: 120%; margin-bottom: 8px;}
 
 h6 {
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 110%;
 	margin-bottom: 8px;
 	color: inherit;
@@ -40,9 +40,9 @@ h6 {
 .normal {font-weight: normal;}
 .bolder {font-weight: bolder;}
 
-p { margin: 0 0 20px 0; line-height: 21px; }
+p { margin: 0 0 20px 0; line-height: 24px; }
 p img { margin: 0; }
-p.lead { font-size: 21px; line-height: 27px; color: #777;  }
+p.lead { font-size: 24px; line-height: 28px; color: #777;  }
 
 em { font-style: italic; }
 strong { font-weight: bold;}
@@ -94,13 +94,11 @@ blockquote, blockquote p {
 	color: #333;
 	font-size: 1.15em;
 	line-height: 140%;
-	font-style: italic;
-	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 blockquote {
 	quotes: none;
-	margin: 0 0 20px;
+	margin: 0 0 20px 20px;
 	padding: 9px 10px 10px 15px;
 	border-left-width: 4px;
 	border-left-style: solid;
@@ -154,7 +152,7 @@ header .content-container {
 }
 
 #main {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 0 20px;
 }
