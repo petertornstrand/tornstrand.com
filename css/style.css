@@ -142,8 +142,15 @@ a, a:visited {text-decoration: underline; outline: 0; }
 a:hover, a:focus { color: #000; text-decoration: none;}
 p a, p a:visited { line-height: inherit; }
 
+.links {
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
 .links a {
-	display: inline-block;
+	font-size: 14px;
 	padding: 2px 10px;
 	background-color: #444;
 	border-radius: 10px;
@@ -155,31 +162,21 @@ p a, p a:visited { line-height: inherit; }
 	color: #fff;
 }
 
-.links p:first-of-type {
-	margin-top: 20px;
-}
-
-.links p:last-of-type {
-	margin-bottom: 0;
-}
-
 
 /* Layout */
 
 header {
-	padding: 95px 20px 20px;
+	padding: 95px 20px 0;
 	border-top: 1px solid #ccc;
 	background: url(/images/header-bg.jpeg) center center / cover no-repeat;
-	margin-bottom: 40px;
 }
 
 header .content-container {
-	max-width: 840px;
+	max-width: 760px;
 	margin: 0 auto;
-	background: #fff;
-	opacity: 0.9;
-	border-radius: 5px;
-	padding: 20px;
+	background: #fafafa;
+	border-radius: 20px 20px 0 0;
+	padding: 20px 20px 0;
 	position: relative;
 }
 
